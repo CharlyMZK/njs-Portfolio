@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/components');
 app.set('view engine','hbs')
 
 
@@ -44,26 +45,7 @@ hbs.registerHelper('screamIt', (text) => {
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
-        currentYear: new Date().getFullYear(),  
-        welcomeMessage: 'Welcome !'
-    })
-});
-
-app.get('/about', (req, res) => {
-   res.render('about.hbs', {
-       pageTitle: 'About Page',
-   })
-});
-
-app.get('/projects', (req, res) => {
-    res.render('projects.hbs', {
-        pageTitle: 'Portfolio Page',
-    })
- });
-
-app.get('/bad', (req, res) => {
-    res.send({
-        errorMessage: 'Unable to handle request'
+        currentYear: new Date().getFullYear()
     })
 });
 
